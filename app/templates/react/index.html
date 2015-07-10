@@ -15,16 +15,27 @@
    		<script type="text/jsx">
     		/*** @jsx React.DOM */
 
-    		var ReactWelcome = React.createClass({
+    		var TweetBox = React.createClass({
+    			getInitialState: function(){
+    				return {
+    					text: ""
+    				};
+    			},
+    			handleChange: function(event){
+    				this.setState({text: event.target.value });
+    			},
     			render: function(){
     				return (
-    					<h1>React page!</h1>
+    					<div className="well clearfix">
+    						<textarea id="textarea" className="form-control" onChange={this.handleChange}></textarea><br/>
+    						<button id="submit" className="btn btn-primary pull-right" disabled={this.state.text.length === 0}>Tweet</button>
+    					</div>
     				);
     			}
     		});
 
     		React.render(
-                React.createElement(ReactWelcome,null),
+                <TweetBox />,
                 document.getElementById('content')
             );
     	</script>

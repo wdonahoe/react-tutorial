@@ -9,9 +9,25 @@
 	</head>
 	<body>
 		<div id="content">
-			<h1>JQuery page!</h1>
+			<div class="well clearfix">
+				<textarea id="textarea" class="form-control"></textarea><br/>
+				<button id="submit" class="btn btn-primary pull-right">Tweet</button>
+			</div>
 		</div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#submit").prop("disabled",true);
+
+				$("#textarea").on("input",function(){
+					if ($(this).val().length > 0){
+						$("#submit").prop("disabled",false);
+					} else {
+						$("#submit").prop("disabled", true);
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
